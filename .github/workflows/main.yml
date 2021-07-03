@@ -17,6 +17,7 @@ jobs:
           release-type: node
           package-name: ngaox
           path: ${{ matrix.path }}
+          monorepo-tags: true
   release:
     needs: changelogs
     if: ${{ needs.changelogs.outputs.release_created }}
