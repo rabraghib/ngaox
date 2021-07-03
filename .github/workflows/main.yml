@@ -6,18 +6,13 @@ on:
 jobs:
   changelogs:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        path: [projects/chaospad, projects/seo, projects/padup]
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
     steps:
       - uses: GoogleCloudPlatform/release-please-action@v2
         with:
-          release-type: node
-          package-name: ngaox
-          path: ${{ matrix.path }}
-          monorepo-tags: true
+          command: manifest
+          default-branch: workflows
   release:
     needs: changelogs
     if: ${{ needs.changelogs.outputs.release_created }}
