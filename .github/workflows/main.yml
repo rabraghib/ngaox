@@ -1,21 +1,86 @@
-name: 🚀 Build & Deploy
+name: 🚀 Build & Release
 on:
   push:
-    # branches:
-    #   - main
+    branches:
+      - main
 jobs:
   changelogs:
     runs-on: ubuntu-latest
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
+      upload_url: ${{ steps.release.outputs.upload_url }}
     steps:
       - uses: GoogleCloudPlatform/release-please-action@v2
         with:
           command: manifest
-          default-branch: workflows
-  release:
+
+  install-dependicies:
     needs: changelogs
+    runs-on: ubuntu-latest
     if: ${{ needs.changelogs.outputs.release_created }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependicies
+        run: yarn install --frozen-lockfile
+      - name: 💾 Store node_modules folder
+        uses: actions/upload-artifact@v2
+        with:
+          name: node_modules
+          path: node_modules
+
+  release-publish:
+    needs: install-dependicies
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - name: Ngaox-SEO
+            distPath: dist/seo
+            buildScript: yarn build:seo
+          - name: Ngaox-Chaospad
+            distPath: dist/chaospad
+            buildScript: yarn build:chaospad
+          - name: Ngaox-Padup
+            distPath: dist/padup
+            buildScript: yarn build:padup
+    steps:
+      - uses: actions/checkout@v2
+      - name: 💾 Download stored node_modules folder
+        uses: actions/download-artifact@v2
+        with:
+          name: node_modules
+          path: node_modules
+      - name: Build ${{ matrix.name }}
+        run: ${{ matrix.buildScript }}
+      - name: 🎉 Publishing @ngaox/${{ matrix.name }} to npm
+        id: publish
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          access: public
+          package: ${{ matrix.distPath }}/package.json
+      - if: steps.publish.outputs.type != 'none'
+        run: |
+          echo "Version changed: ${{ steps.publish.outputs.old-version }} => ${{ steps.publish.outputs.version }}"
+      - name: Zip package dist folder
+        run: zip -r ${{ matrix.distPath }}.zip ${{ matrix.distPath }}
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.changelogs.outputs.upload_url }}
+          asset_path: ${{ matrix.distPath }}.zip
+          asset_name: ${{ matrix.name }}.zip
+          asset_content_type: application/zip
+      - run: |
+          echo "Asset Uploaded!"
+          echo "\tID: ${{ steps.upload-release-asset.outputs.id }}"
+          echo "\tDownload-Url: ${{ steps.upload-release-asset.outputs.browser_download_url }}"
+
+  git-tagging:
+    needs: changelogs
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

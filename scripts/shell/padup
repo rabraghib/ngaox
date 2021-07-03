@@ -25,6 +25,7 @@ then
   sass "$DIR/scss/themes:$DIR/css --no-source-map"
   bin "postcss $DIR/css --use autoprefixer --replace"
   bin "cleancss --batch --batch-suffix .min $DIR/css/*.css"
+  cp -R projects/padup dist/padup
 else
   printf "Unknown command \"$COMMAND\"\n$AVAILABLE_COMMANDS"
 fi

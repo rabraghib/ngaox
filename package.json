@@ -12,6 +12,8 @@
     "build:padup": "./scripts/shell/padup build",
     "start:seo": "ng build seo --watch --c development",
     "build:seo": "ng build seo && cd projects/seo && yarn build",
+    "start:chaospad": "ng build chaospad --watch --c development",
+    "build:chaospad": "ng build chaospad",
     "prepare": "husky install"
   },
   "private": true,

@@ -1,3 +1,5 @@
+@use "sass:math";
+
 // Scrollbar variables
 $scrollbar-width: 1rem !default;
 $scrollbar-thumb-color: #bbb !default;
@@ -17,8 +19,8 @@ $selection-color: #fff !default;
 }
 *::-webkit-scrollbar-thumb {
   background-color: $scrollbar-thumb-color;
-  border-radius: $scrollbar-width/2;
-  border: $scrollbar-width/4 solid transparent;
+  border-radius: math.div($scrollbar-width, 2);
+  border: math.div($scrollbar-width, 4) solid transparent;
   background-clip: content-box;
   &:hover {
     background-color: darken($color: $scrollbar-thumb-color, $amount: 20);
