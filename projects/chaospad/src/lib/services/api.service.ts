@@ -24,6 +24,10 @@ export class ApiService {
     return this.http.get<collection<T>>(this.API_BASE + iri);
   }
 
+  getApiBase(): string {
+    return this.API_BASE;
+  }
+
   post<T>(iri: EntityEntryPoint, body: any): Observable<T> {
     return this.http.post<T>(this.API_BASE + iri, body);
   }
