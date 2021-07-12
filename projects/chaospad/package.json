@@ -1,6 +1,6 @@
 {
   "name": "@ngaox/chaospad",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Chaospad SDK",
   "peerDependencies": {
     "@angular/common": "^12.0.4",

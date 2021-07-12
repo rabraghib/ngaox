@@ -1,6 +1,6 @@
 {
   "name": "@ngaox/seo",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "scripts": {
     "build": "../../node_modules/.bin/tsc -p tsconfig.schematics.json",
     "copy:schemas": "cp --parents schematics/*/schema.json ../../dist/seo/",
