@@ -28,6 +28,7 @@ if ($command -eq "") {
   sass -arg "$DIR/scss/themes:$DIR/css --no-source-map"
   bin -cmd "postcss $DIR/css --use autoprefixer --replace"
   bin -cmd "cleancss --batch --batch-suffix .min $DIR/css/*.css"
+  bin -cmd "rimraf dist/padup"
   cp -R projects/padup dist/padup
 }else {
   Write-Output "Unknown command `"$COMMAND`"`n$AVAILABLE_COMMANDS";

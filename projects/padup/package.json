@@ -1,6 +1,6 @@
 {
   "name": "@ngaox/padup",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lightweight css framework for rapidly and easily build nice looking user interfaces",
   "main": "scss/padup.scss",
   "scripts": {},
