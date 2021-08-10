@@ -2,7 +2,7 @@ name: 🚀 Build & Release
 on:
   push:
     branches:
-      - v1
+      - 1.x.x
 jobs:
   changelogs:
     runs-on: ubuntu-latest
@@ -15,7 +15,7 @@ jobs:
         with:
           token: ${{ secrets.RELEASE_BOT_TOKEN }}
           command: manifest
-          default-branch: v1
+          default-branch: 1.x.x
 
   release-publish:
     needs: changelogs
