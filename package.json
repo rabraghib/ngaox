@@ -8,16 +8,14 @@
     "watch": "ng build --watch --c development",
     "lint": "ng lint",
     "test": "ng test --watch false",
-    "build:docs": "ng build docs && yarn scully",
+    "build:docs": "ng build docs",
     "start:padup": "./scripts/shell/padup start",
     "build:padup": "./scripts/shell/padup build",
     "start:seo": "ng build seo --watch --c development",
     "build:seo": "ng build seo && cd projects/seo && yarn build",
     "start:chaospad": "ng build chaospad --watch --c development",
     "build:chaospad": "ng build chaospad",
-    "prepare": "husky install",
-    "scully": "npx scully --project docs",
-    "scully:serve": "npx scully serve --project docs"
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
@@ -29,9 +27,6 @@
     "@angular/platform-browser": "~12.1.2",
     "@angular/platform-browser-dynamic": "~12.1.2",
     "@angular/router": "~12.1.2",
-    "@scullyio/init": "1.1.4",
-    "@scullyio/ng-lib": "^1.0.0",
-    "@scullyio/scully": "^1.0.0",
     "prismjs": "^1.24.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",
@@ -48,7 +43,6 @@
     "@angular/compiler-cli": "~12.1.2",
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
-    "@scullyio/scully-plugin-docs-link-update": "^1.1.1",
     "@types/jasmine": "^3.7.7",
     "@types/node": "^16.3.2",
     "@types/prismjs": "^1.16.6",
@@ -69,7 +63,7 @@
     "postcss-cli": "^8.3.1",
     "prettier": "^2.3.2",
     "rimraf": "^3.0.2",
-    "sass": "^1.34.2",
+    "sass": "^1.37.5",
     "typescript": "~4.3.5"
   },
   "lint-staged": {
