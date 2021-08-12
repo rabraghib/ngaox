@@ -2,20 +2,22 @@ name: 🚀 Build & Release
 on:
   push:
     branches:
-      - 1.x.x
+      - main
 jobs:
   changelogs:
     runs-on: ubuntu-latest
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
       upload_url: ${{ steps.release.outputs.upload_url }}
+      major: ${{ steps.release.outputs.major }}
+      minor: ${{ steps.release.outputs.minor }}
     steps:
       - uses: google-github-actions/release-please-action@v2
         id: release
         with:
-          token: ${{ secrets.RELEASE_BOT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           command: manifest
-          default-branch: 1.x.x
+          default-branch: main
 
   release-publish:
     needs: changelogs
@@ -35,7 +37,7 @@ jobs:
             buildScript: yarn build:padup
     steps:
       - uses: actions/checkout@v2
-      - name: Install dependicies
+      - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Build ${{ matrix.name }}
         run: ${{ matrix.buildScript }}
@@ -77,11 +79,11 @@ jobs:
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git remote add gh-token "https://${{ secrets.GITHUB_TOKEN }}@github.com/google-github-actions/release-please-action.git"
-          git tag -d v${{ steps.release.outputs.major }} || true
-          git tag -d v${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }} || true
-          git push origin :v${{ steps.release.outputs.major }} || true
-          git push origin :v${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }} || true
-          git tag -a v${{ steps.release.outputs.major }} -m "Release v${{ steps.release.outputs.major }}"
-          git tag -a v${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }} -m "Release v${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }}"
-          git push origin v${{ steps.release.outputs.major }}
-          git push origin v${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }}
+          git tag -d v${{ needs.changelogs.outputs.major }} || true
+          git tag -d v${{ needs.changelogs.outputs.major }}.${{ needs.changelogs.outputs.minor }} || true
+          git push origin :v${{ needs.changelogs.outputs.major }} || true
+          git push origin :v${{ needs.changelogs.outputs.major }}.${{ needs.changelogs.outputs.minor }} || true
+          git tag -a v${{ needs.changelogs.outputs.major }} -m "Release v${{ needs.changelogs.outputs.major }}"
+          git tag -a v${{ needs.changelogs.outputs.major }}.${{ needs.changelogs.outputs.minor }} -m "Release v${{ needs.changelogs.outputs.major }}.${{ needs.changelogs.outputs.minor }}"
+          git push origin v${{ needs.changelogs.outputs.major }}
+          git push origin v${{ needs.changelogs.outputs.major }}.${{ needs.changelogs.outputs.minor }}
