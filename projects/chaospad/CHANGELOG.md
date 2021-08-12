@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.1.1](https://www.github.com/rabraghib/ngaox/compare/chaospad-v1.1.0...chaospad-v1.1.1) (2021-08-12)
+
+
+### Bug Fixes
+
+* `ApiService` not provided ([cf8d37f](https://www.github.com/rabraghib/ngaox/commit/cf8d37fd4fc6d34b6539d873077441b3741fd219))
+
 ## [1.1.0](https://www.github.com/rabraghib/ngaox/compare/chaospad-v1.0.0...chaospad-v1.1.0) (2021-08-12)
 
 
