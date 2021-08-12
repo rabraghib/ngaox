@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://www.github.com/rabraghib/ngaox/compare/chaospad-v1.0.0...chaospad-v1.1.0) (2021-08-12)
+
+
+### Features
+
+* add `AuthService` to facilate auth related api calls ([f10a16f](https://www.github.com/rabraghib/ngaox/commit/f10a16f07e54c01ddd09b522a8487dd0c7f2b03f))
+
 ## 1.0.0 (2021-07-12)
 
 ### Features
