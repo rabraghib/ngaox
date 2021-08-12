@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.1.2](https://www.github.com/rabraghib/ngaox/compare/ngaox-v1.1.1...ngaox-v1.1.2) (2021-08-12)
+
+
+### Bug Fixes
+
+* services providation scop ([f04ec0d](https://www.github.com/rabraghib/ngaox/commit/f04ec0dd2d538d983cd42854537a73f77c46720b))
+
 ### [1.1.1](https://www.github.com/rabraghib/ngaox/compare/ngaox-v1.1.0...ngaox-v1.1.1) (2021-08-12)
 
 
