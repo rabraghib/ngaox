@@ -13,11 +13,14 @@ jobs:
       minor: ${{ steps.release.outputs.minor }}
     steps:
       - uses: google-github-actions/release-please-action@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          command: manifest-pr
+      - uses: google-github-actions/release-please-action@v2
         id: release
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          command: manifest
-          default-branch: main
+          release-type: node
 
   release-publish:
     needs: changelogs
