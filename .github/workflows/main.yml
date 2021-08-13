@@ -16,8 +16,11 @@ jobs:
         id: release
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          command: manifest
-          default-branch: main
+          command: manifest-pr
+      - uses: google-github-actions/release-please-action@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release-type: node
 
   release-publish:
     needs: changelogs
