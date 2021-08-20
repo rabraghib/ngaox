@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.2.1](https://www.github.com/rabraghib/ngaox/compare/v1.2.0...v1.2.1) (2021-08-20)
+
+
+### Reverts
+
+* remove `docs` app ([e977275](https://www.github.com/rabraghib/ngaox/commit/e977275157e4e095ac8ec24f13e13a6812efd37c))
+
 ## 1.2.0 (2021-08-13)
 
 
