@@ -62,14 +62,16 @@ export class UserValidators {
 
       if (control.value && (date > maxDate || date < minDate)) {
         return {
-          birthday: {
-            valid: false,
-            tooOld: date < minDate,
-            tooYoung: date > maxDate
-          }
+          valid: false,
+          tooOld: date < minDate,
+          tooYoung: date > maxDate
         };
       }
       return null;
     };
+  }
+
+  static Bio(): ValidatorFn | null {
+    return Validators.compose([Validators.maxLength(150)]);
   }
 }

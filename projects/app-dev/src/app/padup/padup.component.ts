@@ -24,7 +24,6 @@ export class PadupComponent {
   }
 
   get date() {
-    console.log(this.group.get('date')?.value);
     return this.group.get('date');
   }
 }

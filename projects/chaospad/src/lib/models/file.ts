@@ -8,5 +8,5 @@ export interface File {
   owner: User | IRI;
   tags: (Topic | IRI)[];
   visibility: Topic | IRI; // Topic <type:visibility>
-  uplaodedAt: Date;
+  uploadedAt: Date;
 }
