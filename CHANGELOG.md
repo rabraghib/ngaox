@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.3.0](https://www.github.com/rabraghib/ngaox/compare/v1.2.0...v1.3.0) (2021-08-22)
+
+
+### Features
+
+* **chaospad:** add user validators ([a207a09](https://www.github.com/rabraghib/ngaox/commit/a207a0914b191f60899258dba111bb2433a609a2))
+* restore docs-app with the same setup ([7a81010](https://www.github.com/rabraghib/ngaox/commit/7a81010927bc63097da5db219253c05065217da6))
+* **validators:** add user birthday validator ([9fe5bb5](https://www.github.com/rabraghib/ngaox/commit/9fe5bb54fdb37717741e28038f4c9a5a3ef592a3))
+
+
+### Reverts
+
+* remove `docs` app ([e977275](https://www.github.com/rabraghib/ngaox/commit/e977275157e4e095ac8ec24f13e13a6812efd37c))
+
 ## 1.2.0 (2021-08-13)
 
 
