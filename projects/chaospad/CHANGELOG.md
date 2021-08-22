@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0](https://www.github.com/rabraghib/ngaox/compare/chaospad-v1.1.2...chaospad-v1.2.0) (2021-08-22)
+
+
+### Features
+
+* **chaospad:** add user validators ([a207a09](https://www.github.com/rabraghib/ngaox/commit/a207a0914b191f60899258dba111bb2433a609a2))
+* **validators:** add user birthday validator ([9fe5bb5](https://www.github.com/rabraghib/ngaox/commit/9fe5bb54fdb37717741e28038f4c9a5a3ef592a3))
+
 ### [1.1.2](https://www.github.com/rabraghib/ngaox/compare/chaospad-v1.1.1...chaospad-v1.1.2) (2021-08-12)
 
 
